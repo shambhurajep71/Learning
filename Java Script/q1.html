@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="./index.js"></script>  -->
+</head>
+
+<body>
+    <button id="helloButton"> Say Hello!</button>
+    <script>
+      const btnElement=document.getElementById("helloButton");
+        btnElement.addEventListener("click", (event) => {
+               let newDivElement= document.createElement("p");
+               newDivElement.innerText="Hello";
+               const newBodyElem=document.querySelector("body");
+               newBodyElem.append(newDivElement);
+         })
+    </script>
+</body>
+</html>
