@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 10px;
+            gap: 10px;
+            border: 2px solid black;
+            border-radius: 5px;
+            height: 45vh;
+        }
+
+        #add {
+            background-color: green;
+            color: white;
+        }
+
+        #subtract {
+            background-color: rgb(231, 66, 66);
+            color: white;
+        }
+
+        #reset {
+            background-color: rgb(212, 68, 43);
+            border-radius: 4px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1> Counter</h1>
+        <div id="number">0</div>
+        Increment/ Decrement By:
+        <input type="number" id="increment_decrement" value='0' />
+        <div>
+            <button id="add">+</button>
+            <button id="sub">-</button>
+        </div>
+        <button id="reset"> Reset </button>
+    </div>
+    <script>
+        const counter = document.querySelector('#number');
+        const counter_increment_decrement = document.querySelector('#increment_decrement');
+        const add = document.querySelector('#add');
+        const sub = document.querySelector('#sub');
+        const reset = document.querySelector('#reset');
+
+        add.addEventListener('click', () => {
+            const currNum = parseInt(counter.innerText);
+            const changeBy = parseInt(counter_increment_decrement.value);
+            counter.innerText = currNum + changeBy;
+        });
+
+        sub.addEventListener('click', () => {
+            const currNum = parseInt(counter.innerText);
+            const changeBy = parseInt(counter_increment_decrement.value);
+            if (currNum - changeBy > 0) {
+                counter.innerText = currNum - changeBy;
+            } else {
+                counter.innerText = 0;
+            }
+        });
+
+        reset.addEventListener('click', () => {
+            counter_increment_decrement.value = 0;
+            counter.innerText = 0;
+        });
+
+    </script>
+</body>
+
+</html>

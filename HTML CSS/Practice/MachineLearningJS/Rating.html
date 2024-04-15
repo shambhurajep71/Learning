@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .conatiner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 0.2rem solid black;
+            border-radius: 3rem;
+        }
+
+        .star-container {
+            display: flex;
+            font-size: 5rem;
+            padding: 1rem;
+            color: gray;
+            cursor: pointer;
+        }
+
+        .star-fill {
+            color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="conatiner">
+        <h1>Star Rating</h1>
+        <div class="star-container">
+            <div class="star" data-index="1">&#9733</div>
+            <div class="star" data-index="2">&#9733</div>
+            <div class="star" data-index="3">&#9733</div>
+            <div class="star" data-index="4">&#9733</div>
+            <div class="star" data-index="5">&#9733</div>
+        </div>
+        <h3> Given Rating=> <span id="rating"> 0 </span></h3>
+    </div>
+</body>
+<script>
+    const starContainer = document.querySelector('.star-container');
+    const stars = document.querySelectorAll('.star');
+    const rating = document.querySelector('#rating');
+
+    const fillStar = (index) => {
+        for (let i = 0; i < index; i++) {
+            stars[i].classList.add('star-fill');
+        }
+    }
+    const clearStar = () => {
+        for (let i = 0; i < stars.length; i++) {
+            stars[i].classList.remove('star-fill');
+        }
+    }
+    starContainer.addEventListener('click', (event) => {
+       // console.log(event.target.dataset);
+        const index = parseInt(event.target.getAttribute('data-index'));
+        clearStar();
+        fillStar(index);
+        rating.innerText = index;
+    });
+
+    starContainer.addEventListener('mouseover', hoverListener);
+    starContainer.addEventListener('mouseleave', leaveListener);
+    function hoverListener(event) {
+        const target = event.target;
+        if (target.classList.contains('star')) {
+            const index = target.dataset.index;
+            clearStar();
+            fillStar(index);
+            //console.log(index);
+            
+        }
+    }
+    function leaveListener() {
+         const rate= parseInt( rating.innerText);
+         console.log(rate);
+         if(rate>0){
+            clearStar();
+            fillStar(rate);
+         }else{
+            clearStar();
+         }
+        
+    }
+</script>
+
+</html>

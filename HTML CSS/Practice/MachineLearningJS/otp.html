@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .otp-wrapper {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        .otp {
+            display: flex;
+            gap: 10px;
+            padding: 10px 10px;
+           
+        }
+        .otp input {
+            width: 35px;
+            height: 40px;
+            font-size: 20px;
+            border-radius: 4px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="otp-wrapper">
+        <h1> Enter OTP</h1>
+        <div class="otp">
+            <input type="number" maxlength="1">
+            <input type="number" maxlength="1">
+            <input type="number" maxlength="1">
+            <input type="number" maxlength="1">
+            <input type="number" maxlength="1">
+            <input type="number" maxlength="1">
+        </div>
+    </div>
+</body>
+<script>
+     const otpCont = document.querySelector('.otp');
+    otpCont.addEventListener("keyup", (event) => {
+        if(event.key==='Backspace'||event.key==='Delete') {
+            event.target.previousElementSibling?.focus();
+        }
+
+        if(event.target.value!='' && !isNaN(Number(event.target.value))){
+            event.target.nextElementSibling?.focus();
+        }
+       console.
+    });
+</script>
+</html>
